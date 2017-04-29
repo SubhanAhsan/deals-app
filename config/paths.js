@@ -31,7 +31,7 @@ var nodePaths = (process.env.NODE_PATH || '')
   .filter(Boolean)
   .filter(folder => !path.isAbsolute(folder))
   .map(resolveApp);
-
+  
 var envPublicUrl = process.env.PUBLIC_URL;
 
 function ensureSlash(path, needsSlash) {
