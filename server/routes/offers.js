@@ -45,6 +45,22 @@ router.route('/offers')
     });
 
 
+// on routes that end in /offers/ids
+// ----------------------------------------------------
+
+router.route('/offers/ids')
+// get all the offers ids as array of ids (accessed at GET http://localhost:8080/api/offers/ids)
+    .get(function(req, res) {
+        Offer.find({},'_id', function(err, offers) {
+            if (err)                //TODO error handling
+                res.send(err);
+
+
+            //return the _id as string array and not as object array
+            res.json(offers.map(offer => offer['_id']));
+        });
+    });
+
 // on routes that end in /offers/:offer_id
 // ----------------------------------------------------
 router.route('/offers/:offer_id')
@@ -92,6 +108,8 @@ router.route('/offers/:offer_id')
             res.json({ message: 'Successfully deleted' });
         });
     });
+
+
 
 
 module.exports = router;

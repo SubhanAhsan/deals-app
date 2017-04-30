@@ -12,17 +12,7 @@
  
 }
 
-.App .appMainContainer{
-  height: 100vh;
-  width: 100%;
-  position: fixed;
-  top: 50px;
-  left:0px;
-  background-image: url(../images/dubai1.jpg);
-  background-position: center; 
-  background-repeat: no-repeat;
-    background-attachment: fixed;
-}
+
 
 .App .drawerContainer{
   padding-top: 50px;
