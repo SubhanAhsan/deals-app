@@ -14,7 +14,8 @@ router.route('/locations')
     .post(function(req, res){
 
         var location      = new Location();          //create a new instance of the Location model
-        location.name     = req.body.name         //set the location name
+        location.name     = req.body.name;         //set the location name
+        location.active   = req.body.active;
        
         //save the location and check for errors
         location.save(function(err){
@@ -61,7 +62,7 @@ router.route('/locations/:vendor_id')
                                    
             //update the location info
             location.name         = req.body.name;           
-            //location.active       = req.body.active;
+            location.active       = req.body.active;
 
             //save the location
             location.save(function(err){

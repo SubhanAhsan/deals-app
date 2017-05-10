@@ -1,5 +1,8 @@
-'use strict';
+
 import React, {Component} from 'react';
+import {
+  Link
+} from 'react-router-dom';
 
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
@@ -52,11 +55,13 @@ return(
 <div id="homeFootNav" style={styles.homeFootNav}>
     <Paper zDepth={1}>
         <BottomNavigation >
+         
           <BottomNavigationItem
             label="Latest Deals"
             icon={recentIcon}
-            
+            containerElement={<Link to="/latest" />}
           />
+          
           <BottomNavigationItem
             label="Nearby"
             icon={nearbyIcon}

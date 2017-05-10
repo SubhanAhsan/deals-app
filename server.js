@@ -6,8 +6,16 @@
 // call the packages we need
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
+var https = require('https');               //SSL cert
 var bodyParser = require('body-parser');
 var path       = require('path');
+var fs = require('fs');
+
+//create HTTPS
+https.createServer({
+      key: fs.readFileSync('server.key'),
+      cert: fs.readFileSync('server.crt')
+    }, app).listen(8443);
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -15,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;        // set our port
+
+
 
 
 //connected to MongoDB Atlast hosted free db
@@ -42,6 +52,7 @@ router.use(function(req, res, next) {
     //TODO only for api routes
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "POST, PUT, DELETE, GET, OPTIONS, HEAD");
     // do logging
     console.log('Request to API made...');
     next(); // make sure we go to the next routes and don't stop here
@@ -73,3 +84,4 @@ app.use('/api', locations_router);
 // =============================================================================
 app.listen(port);
 console.log('Magic happens on port ' + port);
+console.log('Secure Magic happens on port ' + 8443);

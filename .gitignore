@@ -5,6 +5,7 @@ npm-debug.log*
 
 #myapp
 www
+.env.*
 
 # Runtime data
 pids

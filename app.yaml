@@ -15,15 +15,21 @@
 runtime: nodejs
 env: flex
 
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 1
+
 # [END runtime]
 
 # Temporary setting to keep gcloud from uploading node_modules
 skip_files:
  - ^node_modules$
  - ^client$
+ - ^config$
  - ^bower_components$
  - ^src$
-  - ^scripts$
+ - ^public$
+ - ^scripts$
  - ^test$
  - ^.git$
  - ^.github$

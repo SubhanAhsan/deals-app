@@ -234,7 +234,7 @@ module.exports = {
     //generates the service worker - added by subhan
     new SWPrecacheWebpackPlugin(
       {
-        cacheId: 'dubai-deals',
+        cacheId: 'dubai-deals-v009',
         filename: 'service-worker.js',
         maximumFileSizeToCacheInBytes: 4194304,
         minify: false,

@@ -1,4 +1,4 @@
-'use strict';
+
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
@@ -6,6 +6,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+
 
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
@@ -22,6 +23,7 @@ import './styles/App.css';
 const styles = {
   title: {
     cursor: 'pointer',   
+    fontSize: '20px',
   }, 
 };
 
@@ -39,12 +41,17 @@ class App extends Component {
   handleDrawerToggle = () => this.setState((prevState, props) => ({drawerOpen: !prevState.drawerOpen}));
   handleDrawerClose = () => this.setState({drawerOpen: false});
 
+  routeToLatestDeals(){
+
+  }
+
   render() {
     return (
+      <Router>
       <div className="App">
         <div className="appBarContainer">
          <AppBar
-            title={<span style={styles.title}>Dubai Deals</span>}
+            title={<span style={styles.title}>Deals & more...</span>}
             onLeftIconButtonTouchTap={this.handleDrawerToggle}
             iconElementRight={<IconButton><IconSocialNotifications /></IconButton>}
             />
@@ -52,20 +59,21 @@ class App extends Component {
        <div className="drawerContainer">
           <Drawer open={this.state.drawerOpen}  docked={false} onRequestChange={(open) => this.setState({drawerOpen: open})}>
             <MenuItem></MenuItem>
-            <MenuItem onTouchTap={this.handleDrawerClose}>Latest Deals</MenuItem>
+            <MenuItem onTouchTap={this.handleDrawerClose} containerElement={<Link to="/latest" />}>Latest Deals</MenuItem>
             <MenuItem onTouchTap={this.handleDrawerClose}>Deals Nearby</MenuItem>
             <MenuItem onTouchTap={this.handleDrawerClose}>View All Deals</MenuItem>
           </Drawer>
        </div>
 
-       <Router>
+       
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/latest" component={LatestDeals}/>
         </Switch>
-       </Router>
+       
 
       </div>
+      </Router>
     );//.return
   }//.render
 

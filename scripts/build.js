@@ -9,6 +9,7 @@ process.env.NODE_ENV = 'production';
 // https://github.com/motdotla/dotenv
 require('dotenv').config({silent: true});
 
+
 var chalk = require('chalk');
 var fs = require('fs-extra');
 var path = require('path');

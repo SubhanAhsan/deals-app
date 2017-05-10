@@ -15,12 +15,13 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {deepOrange500} from 'material-ui/styles/colors';
 
 const muiTheme = getMuiTheme({
+  fontFamily: "'Roboto', sans-serif",
   palette: {
     
   },
   appBar: {
     height: 50,
-    color: deepOrange500,
+   
   },
 });
 
