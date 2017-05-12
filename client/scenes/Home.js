@@ -38,6 +38,9 @@ const styles = {
     width: '100%',
  
   },
+  bottomNavigation: {
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+  },
 };
 
 
@@ -54,7 +57,7 @@ return(
 
 <div id="homeFootNav" style={styles.homeFootNav}>
     <Paper zDepth={1}>
-        <BottomNavigation >
+        <BottomNavigation style={styles.bottomNavigation} >
          
           <BottomNavigationItem
             label="Latest Deals"

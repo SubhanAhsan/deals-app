@@ -6,16 +6,19 @@
 // call the packages we need
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
-var https = require('https');               //SSL cert
-var bodyParser = require('body-parser');
 var path       = require('path');
-var fs = require('fs');
+var fs         = require('fs');
+var bodyParser = require('body-parser');
 
+/*
 //create HTTPS
+var https = require('https');               //SSL cert
+
 https.createServer({
       key: fs.readFileSync('server.key'),
       cert: fs.readFileSync('server.crt')
     }, app).listen(8443);
+    */
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -66,9 +69,22 @@ router.get('/', function(req, res) {
 });
 */
 
+
 //server the mobile front-end
 app.use(express.static(path.join(__dirname, 'www')))
 
+//these are client routes (accessed at GET http://localhost:8080/)
+/*
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/www/index.html'));
+});
+app.get('/latest', function(req, res) {
+    res.sendFile(path.join(__dirname + '/www/index.html'));
+});
+app.get('/login', function(req, res) {
+    res.sendFile(path.join(__dirname + '/www/index.html'));
+});
+*/
 
 // more routes for our API will happen here
 //

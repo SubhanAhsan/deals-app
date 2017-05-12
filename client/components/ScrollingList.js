@@ -24,7 +24,7 @@ const styles = {
         paddingRight: '10px',
         paddingTop: '10px',
         paddingBottom: '10px',
-        backgroundColor: '#FAFAFA',
+       background: 'linear-gradient(90deg, #FE6B8B 30%, #FF8E53 90%)',
     },
 
     vendorlogo: {

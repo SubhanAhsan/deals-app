@@ -9,24 +9,26 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 
-
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {deepOrange500} from 'material-ui/styles/colors';
+import {deepOrange500, white, fullWhite, lightWhite} from 'material-ui/styles/colors';
+
+
 
 const muiTheme = getMuiTheme({
-  fontFamily: "'Roboto', sans-serif",
+  fontFamily: 'Roboto, sans-serif',
   palette: {
     
+    textColor: fullWhite,
   },
   appBar: {
     height: 50,
-   
   },
 });
 
 ReactDOM.render(
-  <MuiThemeProvider muiTheme={muiTheme}>
+  <MuiThemeProvider muiTheme={getMuiTheme(muiTheme)}>
     <App />
   </MuiThemeProvider>,
   document.getElementById('root')

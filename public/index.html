@@ -40,8 +40,9 @@
     <link rel="apple-touch-icon" sizes="144x144" href="%PUBLIC_URL%/manifest/icon-144x144.png">
     <link rel="apple-touch-icon" sizes="192x192" href="%PUBLIC_URL%/manifest/icon-192x192.png">
 
-<!-- Firebase web app init code-->
-<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<!-- Firebase web app init code and load API modules-->
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-auth.js"></script>
 <script>
   // Initialize Firebase
   var config = {
@@ -54,6 +55,9 @@
   };
   firebase.initializeApp(config);
 </script>
+<!-- FirebaseUI - auth drop-in component -->
+<script src="https://cdn.firebase.com/libs/firebaseui/1.0.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.1/firebaseui.css" />
 
     <!-- Load and register pre-caching Service Worker -->
     <script>

@@ -1,11 +1,11 @@
 {
   "name": "Deals",
   "short_name": "Deals",
-  "start_url": "/?homescreen=1",
+  "start_url": "/index.html",
   "display": "standalone",
   "orientation":  "portrait",
-  "theme_color": "#E0F7FA",
-  "background_color": "#E0F7FA",
+  "theme_color": "#00bcd4",
+  "background_color": "#00bcd4",
   "icons": [
     {
       "src": "manifest/icon-192x192.png",
