@@ -1,11 +1,12 @@
 {
-  "name": "Deals",
-  "short_name": "Deals",
-  "start_url": "/index.html",
+  "name": "SaveMyDime.com",
+  "short_name": "SaveMyDime.com",
+   "scope": "./",
+  "start_url": "index.html",
   "display": "standalone",
   "orientation":  "portrait",
-  "theme_color": "#00bcd4",
-  "background_color": "#00bcd4",
+  "theme_color": "#FE6B8B",
+  "background_color": "#FE6B8B",
   "icons": [
     {
       "src": "manifest/icon-192x192.png",

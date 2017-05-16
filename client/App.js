@@ -18,6 +18,7 @@ import IconSocialNotifications from 'material-ui/svg-icons/social/notifications'
 import Home from './scenes/Home';
 import Login from './scenes/Login';
 import LatestDeals from './scenes/LatestDeals';
+import DealInfo from './scenes/DealInfo';
 
 
 import './styles/App.css';
@@ -26,7 +27,14 @@ const styles = {
   title: {
     cursor: 'pointer',   
     fontSize: '20px',
+    fontWeight: 'bolder',
   }, 
+  titleWordMy:{
+    color: '#a7ff00',
+    fontStyle: 'italic',
+    paddingLeft: '2px',
+    paddingRight: '4px',
+  },
   appBar:{
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
   },
@@ -60,7 +68,7 @@ class App extends Component {
         <div className="appBarContainer">
          <AppBar
             style={styles.appBar}
-            title={<span style={styles.title}>Deals & more...</span>}
+            title={<span style={styles.title}>Save<span style={styles.titleWordMy}>My</span>Dime.com</span>}
             onLeftIconButtonTouchTap={this.handleDrawerToggle}
             iconElementRight={<IconButton><IconSocialNotifications /></IconButton>}
             />
@@ -82,8 +90,12 @@ class App extends Component {
        
         <Switch>
           <Route exact path="/" component={Home}/>
+         
           <Route path="/latest" component={LatestDeals}/>
+          <Route path="/deal" component={DealInfo}/>
            <Route path="/login" component={Login}/>
+
+            <Route path="/index.html" component={Home}/>
         </Switch>
        
 

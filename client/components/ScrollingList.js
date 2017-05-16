@@ -8,11 +8,16 @@ import CircularProgress from 'material-ui/CircularProgress';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import IconArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
 
+import DealInfo from '../scenes/DealInfo.js';
+
 //const colorBGList = ['#FFC107', '#FF5722', '#00BCD4', '#8BC34A','#009688'];
 const colorBGList = ['#FFF', '#EEEEEE', '#FFF', '#EEEEEE'];
 const colorTitleBGList = ['rgb(212, 125, 0)', 'rgb(181, 173, 0)', 'rgb(0, 188, 212)'];
 
 const styles = {
+    cardContainer: {
+        background: 'linear-gradient(90deg, #FE6B8B 30%, #FF8E53 90%)',
+    },
     card: {
         height: '250px',
         textAlign: 'center',
@@ -24,7 +29,19 @@ const styles = {
         paddingRight: '10px',
         paddingTop: '10px',
         paddingBottom: '10px',
-       background: 'linear-gradient(90deg, #FE6B8B 30%, #FF8E53 90%)',
+
+    },
+    cardPaper: {
+        backgroundColor: 'rgba(255, 255, 255, 1)',
+        color: 'rgb(119, 0, 0)',
+        height: '250px',
+        textAlign: 'center',
+        overflow: 'hidden',
+    },
+    cardHeader: {
+        background: 'linear-gradient(45deg, rgb(185, 60, 87) 30%, #ce7547 90%)',
+        height: '100px',
+        color: 'rgb(255, 255, 255)',
     },
 
     vendorlogo: {
@@ -55,6 +72,7 @@ const styles = {
         padding: '5px',
         fontSize: '14px',
         textAlign: 'left',
+        lineHeight: '1.5em',
     },
     dateRow: {
         width: '100%',
@@ -87,6 +105,9 @@ const styles = {
         right: '30px',
         bottom: '30px',
     },
+    actionGoTop: {
+        background: 'rgb(95, 50, 90)',
+    },
 };
 
 const Spinner = props => {
@@ -107,6 +128,13 @@ class ScrollingList extends Component {
             isLoading: true,
             isLoadingMore: false,
 
+            showDealInfo: false,
+            currentDealInfo: {
+                _id: "",
+                name:"", desc:"", offer_start: "", offer_end: "",
+                locations: [], 
+                vendor: {logo: "", name:"", vendorid:""},
+            },
         }
         this.ContentIDs = [];
         this.startIndex = 0;
@@ -116,6 +144,9 @@ class ScrollingList extends Component {
         this.scrollUpAction = this.scrollUpAction.bind(this);
         this.cardBgColorSelector = this.cardBgColorSelector.bind(this);
         this.cardTitleBgColorSelector = this.cardTitleBgColorSelector.bind(this);
+
+        this.handleCardTap = this.handleCardTap.bind(this);
+        this.handleCardClose = this.handleCardClose.bind(this);
     }
 
     componentDidMount() {
@@ -246,15 +277,23 @@ class ScrollingList extends Component {
         }
     }
 
+    handleCardTap(data, event){
+        console.log(data);
+        this.setState({showDealInfo: true, currentDealInfo: data});
+    }
+    handleCardClose(){
+         this.setState({showDealInfo: false});
+    }
+
     render() {
         var newStories1 = this.state.newStories.map((data, index) => {
             //console.log("index " + index);
             return (
-                <div style={styles.cardWrapper} key={index}>
+                <div style={styles.cardWrapper} key={index} >
                     <div style={styles.cardWrapperBG}>
-                        <Paper style={this.cardBgColorSelector(index)} zDepth={1} rounded={false} >
+                        <Paper style={styles.cardPaper} zDepth={1} rounded={false} onTouchTap={this.handleCardTap.bind(this, data)} >
                             <div style={styles.vendorlogo}><img style={styles.vendorlogoimg} src={data.vendor.logo} /></div>
-                            <div style={this.cardTitleBgColorSelector(index)}><div style={styles.cardTitle}>{data.name}</div></div>
+                            <div style={styles.cardHeader}><div style={styles.cardTitle}>{data.name}</div></div>
                             <div style={styles.cardBodyWrapper}>
                                 <div style={styles.dateRow}><div style={styles.offerStart}><span>Offer Starts: </span>{new Date(data.offer_start).toDateString()}</div> <div style={styles.offerEnd}><span>Offer Ends: </span>{new Date(data.offer_end).toDateString()}</div></div>
                                 <div style={styles.cardDesc}>{data.desc}</div>
@@ -266,7 +305,7 @@ class ScrollingList extends Component {
         }, this);
 
         return (
-            <div className="content-container">
+            <div className="content-container" style={styles.cardContainer}>
 
                 {newStories1}
 
@@ -274,12 +313,20 @@ class ScrollingList extends Component {
                     <Spinner isLoading={true} />
                 </div>
 
-                <div style={styles.actionUpWrapper}>
-                    <FloatingActionButton mini={true} onTouchTap={this.scrollUpAction}>
-                        <IconArrowUp />
-                    </FloatingActionButton>
-                </div>
+                {!this.state.showDealInfo &&
+                    <div style={styles.actionUpWrapper}>
+                        <FloatingActionButton backgroundColor='rgb(255, 142, 83)' mini={true} onTouchTap={this.scrollUpAction}>
+                            <IconArrowUp />
+                        </FloatingActionButton>
+                    </div>
+                }
+
+               <DealInfo open={this.state.showDealInfo} data={this.state.currentDealInfo} handleClose={()=> this.handleCardClose} />
+       
             </div>
+
+
+
         )//.return
     }//.render
 }//.class ScrollingList

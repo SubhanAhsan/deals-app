@@ -38,11 +38,15 @@ mongoose.connect('mongodb://node:bombay@cluster0-shard-00-00-inw4q.mongodb.net:2
 var Offer       = require('./server/models/offer');
 var Vendor      = require('./server/models/vendor');
 var Location      = require('./server/models/location');
+var Category      = require('./server/models/category');
+var SubCategory      = require('./server/models/subcategory');
 
 //routes
 var offers_router    = require('./server/routes/offers');
 var vendors_router   = require('./server/routes/vendors');
 var locations_router   = require('./server/routes/locations');
+var categories_router   = require('./server/routes/categories');
+var subcategories_router   = require('./server/routes/subcategories');
 
 
 // ROUTES FOR OUR API
@@ -95,6 +99,8 @@ app.use('/api', router); //TODO - use this route for UI --  remove /api
 app.use('/api', offers_router);
 app.use('/api', vendors_router);
 app.use('/api', locations_router);
+app.use('/api', categories_router);
+app.use('/api', subcategories_router);
 
 // START THE SERVER
 // =============================================================================

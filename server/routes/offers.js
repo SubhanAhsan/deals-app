@@ -21,8 +21,9 @@ router.route('/offers')
         offer.vendor.vendorid = req.body.vendor.vendorid;
         offer.vendor.name = req.body.vendor.name;
         offer.vendor.logo = req.body.vendor.logo;
-        offer.location.locationid = req.body.location.locationid;
-        offer.location.name = req.body.location.name;
+        //offer.location.locationid = req.body.location.locationid;
+        //offer.location.name = req.body.location.name;
+        offer.locations = req.body.locations;
 
         // save the offer and check for errors
         offer.save(function (err) {
@@ -95,8 +96,9 @@ router.route('/offers/:offer_id')
             offer.vendor.vendorid = req.body.vendor.vendorid;
             offer.vendor.name = req.body.vendor.name;
             offer.vendor.logo = req.body.vendor.logo;
-            offer.location.locationid = req.body.location.locationid;
-            offer.location.name = req.body.location.name;
+            //offer.location.locationid = req.body.location.locationid;
+            //offer.location.name = req.body.location.name;
+             offer.locations = req.body.locations;
 
             // save the offer
             offer.save(function (err) {

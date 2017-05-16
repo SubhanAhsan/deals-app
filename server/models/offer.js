@@ -28,7 +28,7 @@ var OfferSchema   = new Schema({
             type: String        //vendor company logo
         }          
     },
-    location:{                  //TODO - location will be multivalue/array
+    locations:[{                
         locationid:{
             type: Schema.Types.ObjectId,
             turnOn: false
@@ -36,7 +36,7 @@ var OfferSchema   = new Schema({
         name:{
             type: String
         }
-    }
+    }]
 
 });
 
