@@ -103,6 +103,19 @@ const styles = {
 
 class Home extends Component {
 
+componentWillMount() {
+  console.log("Home - componentWillMount");
+  
+}
+componentDidMount() {
+console.log("Home - componentDidMount");
+
+  this.props.updateTopState({showNavBack: false});
+}
+componentWillUnmount() {
+  console.log("Home - componentWillUnmount");
+   this.props.updateTopState({showNavBack: true});
+}
 
   render() {
 

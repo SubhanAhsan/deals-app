@@ -21,9 +21,10 @@ router.route('/offers')
         offer.vendor.vendorid = req.body.vendor.vendorid;
         offer.vendor.name = req.body.vendor.name;
         offer.vendor.logo = req.body.vendor.logo;
-        //offer.location.locationid = req.body.location.locationid;
-        //offer.location.name = req.body.location.name;
+
         offer.locations = req.body.locations;
+        offer.categories = req.body.categories;
+        offer.subcategories = req.body.subcategories;
 
         // save the offer and check for errors
         offer.save(function (err) {
@@ -39,7 +40,7 @@ router.route('/offers')
     .get(function (req, res) {
         //TODO use the RESTfullness to get the filter, select, options
         //right now its reverse date sort
-        Offer.find({}, null, {sort: {'_id': 'desc'}}, function (err, offers) {
+        Offer.find({}, null, { sort: { '_id': 'desc' } }, function (err, offers) {
             if (err)                //TODO error handling
                 res.send(err);
 
@@ -56,7 +57,7 @@ router.route('/offers/ids')
     .get(function (req, res) {
         //TODO use the RESTfullness to get the filter, select, options
         //right now its reverse date sort
-        Offer.find({}, '_id', {sort: {'_id': 'desc'}}, function (err, offers) {
+        Offer.find({}, '_id', { sort: { '_id': 'desc' } }, function (err, offers) {
             if (err)                //TODO error handling
                 res.send(err);
 
@@ -96,9 +97,10 @@ router.route('/offers/:offer_id')
             offer.vendor.vendorid = req.body.vendor.vendorid;
             offer.vendor.name = req.body.vendor.name;
             offer.vendor.logo = req.body.vendor.logo;
-            //offer.location.locationid = req.body.location.locationid;
-            //offer.location.name = req.body.location.name;
-             offer.locations = req.body.locations;
+
+            offer.locations = req.body.locations;
+            offer.categories = req.body.categories;
+            offer.subcategories = req.body.subcategories;
 
             // save the offer
             offer.save(function (err) {
